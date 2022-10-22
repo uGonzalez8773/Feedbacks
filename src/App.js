@@ -33,14 +33,7 @@ const App = () => {
     setCounters(INITIAL_STATE)
     setClicks([])
   }
-  
-  const render = (clicks) => {
-    console.log(clicks)
-    clicks?.length === 0
-      ? <NoFeeds />
-      : <ListOfClicks clicks={clicks} counters={counters} />
-  }
-  
+
   return (
     <div>
       <p>El valor de los feedbacks buenos es: {counters.good} </p>
@@ -48,7 +41,9 @@ const App = () => {
       <button onClick={handleGood}>Feedback buenos</button>
       <button onClick={handleBad}>Feedback malos</button>
       <button onClick={handleReset}>Resetar feedbacks</button>       
-      {render()}
+      {clicks?.length === 0
+      ? <NoFeeds />
+      : <ListOfClicks clicks={clicks} counters={counters} />}
     </div>
   );
 };
